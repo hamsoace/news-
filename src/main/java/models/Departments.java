@@ -1,16 +1,24 @@
 package models;
 
+import java.util.Objects;
+
 public class Departments {
 
     private int id;
     private String departmentName;
     private String departmentDesc;
-    private int departmentNo;
+    private int departmentEmployees;
 
-    public Departments(String departmentName, String departmentDesc, int departmentNo) {
+
+    public Departments(String departmentName, String departmentDesc, int departmentEmployees) {
         this.departmentName = departmentName;
         this.departmentDesc = departmentDesc;
-        this.departmentNo = departmentNo;
+        this.departmentEmployees = departmentEmployees;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(departmentName, departmentDesc, departmentEmployees, id);
     }
 
     public int getId() {
@@ -37,11 +45,11 @@ public class Departments {
         this.departmentDesc = departmentDesc;
     }
 
-    public int getDepartmentNo() {
-        return departmentNo;
+    public int getDepartmentEmployees() {
+        return departmentEmployees;
     }
 
-    public void setDepartmentNo(int departmentNo) {
-        this.departmentNo = departmentNo;
+    public void setDepartmentEmployees(int departmentEmployees) {
+        this.departmentEmployees = departmentEmployees;
     }
 }
