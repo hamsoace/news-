@@ -94,11 +94,26 @@ public class Sql2oDepartmentsDAO implements DepartmentsDAO{
     @Override
     public void deleteById(int id) {
         String sql = "DELETE FROM departments WHERE id = :id";
-        String delete = "DELETE FROM departmentEmployees"
+        String delete = "DELETE FROM departmentEmployees WHERE departmentId = :departmentId";
+        try (Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+            con.createQuery(delete)
+                    .addParameter("departmentId", id)
+                    .executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
     }
 
     @Override
     public void clearAll() {
-
+        String sql = "DELETE FROM departments";
+        try (Connection con = sql2o.open()){
+            con.createQuery(sql).executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
     }
 }
