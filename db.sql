@@ -11,8 +11,14 @@ CREATE TABLE employees(
 );
 
 CREATE TABLE departments(
-    id SERIAL PRIMARY KEY;
+    id SERIAL PRIMARY KEY,
     departmentName varchar,
     departmentDesc varchar,
     departmentEmployees int
+);
+
+CREATE TABLE departmentEmployees(
+    id SERIAL PRIMARY KEY,
+    departmentId int,
+    employeeId int
 );

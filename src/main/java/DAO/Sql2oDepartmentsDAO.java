@@ -39,7 +39,7 @@ public class Sql2oDepartmentsDAO implements DepartmentsDAO{
 
     @Override
     public void addDepartmentEmployees(Departments departments, Employee employee) {
-
+        String sql = "INSERT INTO departmentsEmployees"
     }
 
     @Override
